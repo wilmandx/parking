@@ -12,4 +12,4 @@ class Tarifa(models.Model):
 	horas = models.IntegerField(default=0)
 	dias = models.IntegerField(default=0)
 	valor = models.FloatField(default=0)
-	tipoTarifa = models.ForeignKey(ValorTipo)
+	#tipoTarifa = models.ForeignKey(ValorTipo)
