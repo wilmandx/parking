@@ -7,4 +7,4 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def index(request):
 	usuario=request.user
-	return HttpResponse(str(usuario.groups.values_list('name',flat=True))+"Hello, world. You're at the polls index.")
+	return HttpResponse(str(usuario.groups.values_list('name',flat=True))+"Hello,,,, world. You're at the polls index.")
