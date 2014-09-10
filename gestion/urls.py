@@ -4,4 +4,5 @@ from gestion import views
 
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
+    url(r'^listar$', views.listar, name='listar'),
 )

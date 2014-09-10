@@ -1,0 +1,27 @@
+{% extends "admin/base_site.html" %}
+
+{% block content_title %}<a class="navbar-brand">Listar</a>{% endblock %}
+
+{% block content %}
+<p>Listado de elementos</p>
+
+<table class="table table-striped">
+ <tr>
+<th>Numero</th><th>valor</th><th>horas</th>
+ </tr>
+
+{% if tarifas_list %}
+    
+    {% for tarifa in tarifas_list %}
+     <tr>
+     	<td>{{ tarifa.id }}</td>
+     	<td>{{ tarifa.nombre }}</td>
+     	<td>{{ tarifa.horas }}</td>
+     </tr>
+    {% endfor %}
+    
+{% endif %}
+
+</table>
+
+{% endblock %}
