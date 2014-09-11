@@ -4,19 +4,24 @@
 
 {% block content %}
 <p>Listado de elementos</p>
+{% if message %}
+<p class="bg-success">{{message}}</p>
+{% endif %}
 
+<button type="button" class="btn btn-primary" onclick="location.href='/gestion/add'">Agregar</button>
+<h1></h1>
 <table class="table table-striped">
  <tr>
-<th>Numero</th><th>valor</th><th>horas</th>
+<th>valor</th><th>horas</th><th>Opciones</th>
  </tr>
 
 {% if tarifas_list %}
     
     {% for tarifa in tarifas_list %}
      <tr>
-     	<td>{{ tarifa.id }}</td>
      	<td>{{ tarifa.nombre }}</td>
      	<td>{{ tarifa.horas }}</td>
+     	<td><a href="/gestion/edit/{{tarifa.id}}">Editar</a> | <a href="/gestion/delete/{{tarifa.id}}">Borrar</a></td>
      </tr>
     {% endfor %}
     
