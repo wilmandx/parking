@@ -1,14 +1,34 @@
 {% extends "admin/base_site.html" %}
 
-{% block content_title %}<a class="navbar-brand">Listar</a>{% endblock %}
+{% block breadcrumbs %}
+<ul class="breadcrumb">
+<li><a href="{% url 'gestion:listar' %}">Listado</a></li>
+</ul>
+{% endblock %}
+
+
+{% block object-tools %}
+<ul class="object-tools pull-left navbar-form
+list-unstyled">         
+{% block object-tools-items %}         
+<li>
+<a class="navbar-brand">Gestión de Tarifas</a>
+<a href="{% url 'gestion:add' %}" class="btn btn-primary">             
+	<span class="glyphicon
+glyphicon-plus">
+	</span> Agregar </a>         
+</li>         
+{% endblock%}
+</ul> 
+{% endblock %}
+
 
 {% block content %}
-<p>Listado de elementos</p>
+
 {% if message %}
-<p class="bg-success">{{message}}</p>
+<div class="alert alert-success" role="alert">{{message}}</div>
 {% endif %}
 
-<button type="button" class="btn btn-primary" onclick="location.href='/gestion/add'">Agregar</button>
 <h1></h1>
 <table class="table table-striped">
  <tr>

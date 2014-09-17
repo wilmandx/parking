@@ -1,5 +1,12 @@
 {% extends "admin/base_site.html" %}
 
+{% block breadcrumbs %}
+<ul class="breadcrumb">
+<li><a href="{% url 'gestion:listar' %}">Listado</a></li>
+<li>Registro</li>
+</ul>
+{% endblock %}
+
 {% block content_title %}<a class="navbar-brand">Listar</a>{% endblock %}
 
 {% block content %}
@@ -10,9 +17,11 @@
 
 
 <h1></h1>
-<form class="form-horizontal" style="width:700px"  action="/gestion/save" method="post">
+<form class="form-horizontal" style="width:700px"  action="/gestion/save/" method="post">
 	{% csrf_token %}
-	<input type="hidden" name="id" value="{{tarifa.id}}">
+	<!--<button type="submit" class="btn btn-primary">Guardar</button>-->
+	{# form.as_p #}
+	<input type="hidden" name="id" value="{{tarifa.id|default_if_none:''}}">
 	<div class="form-group">
 	    <label for="nombre" class="col-sm-2 control-label">Nombre</label>
 	    <div class="col-sm-10">

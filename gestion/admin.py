@@ -6,7 +6,9 @@ from django.contrib import admin
 from gestion.models import *
 
 class ValorTipoAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'activo')
+    list_display = ('id','padre','nombre', 'activo')
+    list_filter = ('padre','activo')
+    search_fields=('nombre',)
 
 class TarifaAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'horas','valor')
