@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load staticfiles %}
+    {% load security_tags %}
+    <link rel="stylesheet" href="{% static "css/main.css" %}" />
+    <script type="text/javascript" src="{% static "js/main.js" %}" ></script>
+    <title>{% block title %}Parking{% endblock %}</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header">
+            Site
+        </div>
+        <div id="navigation">
+            <p>This is the Menu - {{ user.get_username }}</p>
+        </div>
+        <div id="leftcolumn">
+            {% block sidebar %}
+                {% if user|in_group:"Administrador" %}
+                    {% include "menuAdmin.html" %}
+                {% endif %}
+                {% if user|in_group:"Operador" %}
+                    {% include "menuOperador.html" %}
+                {% endif %}
+            {% endblock %}
+        </div>
+
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+        <div id="footer">
+            Footer
+        </div>
+    </div>
+</body>
+</html>

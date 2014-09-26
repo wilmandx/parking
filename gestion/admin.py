@@ -5,6 +5,7 @@ from django.contrib import admin
 # Register your models here.
 from gestion.models import *
 
+
 class ValorTipoAdmin(admin.ModelAdmin):
     list_display = ('id','padre','nombre', 'activo')
     list_filter = ('padre','activo')
