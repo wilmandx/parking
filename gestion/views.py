@@ -12,7 +12,7 @@ from django.http import HttpResponseRedirect
 class TarifaForm(ModelForm):
     class Meta:
         model = Tarifa
-        fields = ['id', 'nombre', 'dias','horas']
+        fields = ['id', 'nombre' ,'horas']
         #fields = '__all__'
 
 @login_required

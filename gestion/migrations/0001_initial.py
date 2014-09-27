@@ -13,10 +13,9 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Tarifa',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
+                ('id', models.AutoField(serialize=False, auto_created=True, verbose_name='ID', primary_key=True)),
                 ('nombre', models.CharField(max_length=200)),
                 ('horas', models.IntegerField(default=0)),
-                ('dias', models.IntegerField(default=0)),
                 ('valor', models.FloatField(default=0)),
             ],
             options={
@@ -26,11 +25,11 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ValorTipo',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
-                ('nombre', models.CharField(max_length=1000)),
+                ('id', models.AutoField(serialize=False, auto_created=True, verbose_name='ID', primary_key=True)),
+                ('nombre', models.CharField(max_length=500)),
                 ('descripcion', models.CharField(max_length=3000)),
                 ('activo', models.BooleanField(default=True)),
-                ('padre', models.ForeignKey(to='gestion.ValorTipo', null=True)),
+                ('padre', models.ForeignKey(to='gestion.ValorTipo', null=True, blank=True)),
             ],
             options={
             },
@@ -38,7 +37,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='tarifa',
-            name='tipoTarifa',
+            name='tipoVehiculo',
             field=models.ForeignKey(to='gestion.ValorTipo'),
             preserve_default=True,
         ),

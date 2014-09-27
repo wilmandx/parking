@@ -12,8 +12,7 @@ class ValorTipo(models.Model):
 class Tarifa(models.Model):
 	nombre = models.CharField(max_length=200)
 	horas = models.IntegerField(default=0)
-	dias = models.IntegerField(default=0)
 	valor = models.FloatField(default=0)
-	tipoTarifa = models.ForeignKey(ValorTipo)
+	tipoVehiculo = models.ForeignKey(ValorTipo)
 	def __str__(self):
 		return self.nombre
