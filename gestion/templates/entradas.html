@@ -1,0 +1,53 @@
+{% extends "base_layout.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Entrada/Salida</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+<form class="form-horizontal" role="form">
+    <div class="form-group col-md-6">
+      <div class="input-group input-group-lg">
+        <input type="text" class="form-control" placeholder="Placa">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button"><i class="fa fa-search"></i>
+            </button>
+        </span>
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <div class="input-group input-group-lg">
+          <input type="text" class="form-control" placeholder="Fecha-Hora">
+          <span class="input-group-addon">#</span>
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+        <label for="inputEmail" class="col-md-3 control-label">Tipo Vehiculo</label>
+        <div class="col-md-9">
+          <select class="form-control">
+              <option>Vehiculo</option>
+              <option>Moto</option>
+           </select>
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="inputEmail3" class="col-md-3 control-label">Tarifa</label>
+        <div class="col-md-9">
+          <select class="form-control">
+              <option>Por 1 hora</option>
+              <option>Por 12 horas</option>
+           </select>
+        </div>
+    </div>
+    <div class="form-actions">
+        <button type="button" class="btn btn-default btn-lg">Cancelar</button>
+        <button type="button" class="btn btn-primary btn-lg">Ingresar</button>
+    </div>
+</form>
+</div>
+<!-- /.row -->
+{% endblock %}

@@ -14,4 +14,8 @@ def index(request):
 
 @login_required
 def index2(request):
+	return render(request, 'base_layout.html')
+
+@login_required
+def forms(request):
 	return render(request, 'forms.html')

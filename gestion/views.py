@@ -52,3 +52,7 @@ def save(request):
 def delete(request,id):
 	Tarifa.objects.get(id=id).delete()
 	return redirect('gestion:listar1',message='ok')
+
+@login_required
+def entradas(request):
+	return render(request, 'entradas.html')
