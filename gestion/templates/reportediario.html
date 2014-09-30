@@ -1,0 +1,33 @@
+{% extends "base_layout.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">Report diario</h3>
+    </div>
+</div>
+
+
+<h1></h1>
+<table class="table table-striped table-bordered">
+ <tr>
+<th>Nro.</th><th>placa</th><th>Hora entrada</th><th>Hora salida</th><th>Tipo Vehiculo</th><th>Horas</th><th>Valor</th>
+ </tr>
+
+{% if list_parqueos %}
+    {% for parqueo in list_parqueos %}
+     <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{ parqueo.placa }}</td>
+      <td>{{ parqueo.horaEntrada }}</td>
+      <td>{{ parqueo.horaSalida|default_if_none:"--/--/--" }}</td>
+      <td>{{ parqueo.tipoVehiculo }}</td>
+      <td>{{ parqueo.horas|default_if_none:"----"  }}</td>
+      <td>{{ parqueo.valor|default_if_none:"----"  }}</td>
+     </tr>
+    {% endfor %}
+    
+{% endif %}
+
+</table>
+
+{% endblock %}

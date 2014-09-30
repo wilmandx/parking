@@ -15,7 +15,7 @@
             </li>
             {% if user|in_group:"Administrador,Operador" %}
             <li>
-                <a href="../gestion/entradas"><i class="fa fa-dashboard fa-fw"></i>Entradas</a>
+                <a href="/gestion/entradas"><i class="fa fa-dashboard fa-fw"></i>Entradas</a>
             </li>
             {% endif %}
             {% if user|in_group:"Administrador" %}
@@ -23,7 +23,7 @@
                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Reportes<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="flot.html">Sin pagar</a>
+                        <a href="/gestion/reportediario">Registro diario</a>
                     </li>
                     <li>
                         <a href="morris.html">Pagados</a>

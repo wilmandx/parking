@@ -11,4 +11,7 @@ urlpatterns = patterns('',
     url(r'^add/$', views.edit, name='add'),   
     url(r'^edit/(?P<id>\d+)/$', views.edit, name='edit'),
     url(r'^entradas/$', views.entradas, name='entradas'),
+    url(r'^entradas/save/$', views.save_entrada, name='save_entrada'),
+    url(r'^entradas/validar/$', views.validar_entrada, name='validar_entrada'),
+    url(r'^reportediario/$', views.reportediario, name='reportediario'),
 )

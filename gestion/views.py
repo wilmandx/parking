@@ -3,16 +3,24 @@ from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from gestion.models import Tarifa
-from gestion.models import ValorTipo
+from gestion.models import ValorTipo,Parqueo,Tarifa
 from django.forms import ModelForm
 from django.http import HttpResponseRedirect
+import datetime
+from django.utils import timezone
 
 # Create your views here.
 class TarifaForm(ModelForm):
     class Meta:
         model = Tarifa
         fields = ['id', 'nombre' ,'horas']
+        #fields = '__all__'
+
+# Create your views here.
+class ParqueoForm(ModelForm):
+    class Meta:
+        model = Parqueo
+        fields = ['id','placa' ,'tipoVehiculo' ,'tipoTarifa']
         #fields = '__all__'
 
 @login_required
@@ -55,4 +63,50 @@ def delete(request,id):
 
 @login_required
 def entradas(request):
-	return render(request, 'entradas.html')
+	entrada=True
+	context = {'opcion':'gestion:validar_entrada','entrada':entrada}
+	return render(request, 'entradas.html',context)
+
+@login_required
+def validar_entrada(request):
+	ta,vt,parqueo=Tarifa(),ValorTipo(),Parqueo()
+	vt.id,ta.tipoTarifa=1,vt
+	entrada=True
+	if request.POST['placa']!='': 
+		placa=request.POST['placa']
+	#Buscar con la placa...si ya hay una entrada
+	try:
+		parqueo=Parqueo.objects.get(placa=placa,horaSalida=None)
+		parqueo.horaSalida=timezone.now()
+		diferencia=parqueo.horaSalida-parqueo.horaEntrada
+		parqueo.horas=int(diferencia.seconds/60/60)+int(diferencia.days*24)
+		parqueo.valor=5000
+		entrada=False
+	except Parqueo.DoesNotExist:
+		parqueo.placa=placa
+	context = {'opcion':'gestion:save_entrada','parqueo':parqueo,'entrada':entrada}
+	return render(request, 'entradas.html',context)
+
+@login_required
+def save_entrada(request):
+	entrada=True
+	ta,vt,parqueo=Tarifa(),ValorTipo(),Parqueo()
+	vt.id,ta.tipoTarifa=1,vt
+	placa=''
+	if request.POST['id']!='':
+		parqueo.id=int(request.POST['id'])
+	if request.POST['placa']!='':
+		placa=request.POST['placa']
+	#Buscar con la placa...si ya hay una entrada
+	form = ParqueoForm(request.POST,instance=parqueo)
+	list_parqueos=Parqueo.objects.all()
+	context = {'list_parqueos':list_parqueos,'entrada':entrada}
+	if form.is_valid():
+		form.save()
+	return render(request, 'entradas.html',context)
+
+@login_required
+def reportediario(request):
+	list_parqueos=Parqueo.objects.all()
+	context = {'list_parqueos':list_parqueos}
+	return render(request, 'reportediario.html',context)
