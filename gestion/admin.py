@@ -32,5 +32,10 @@ class TarifaAdmin(admin.ModelAdmin):
 	list_display = ('nombre','tipoVehiculo','horas','valor')
 	list_per_page=5
 
+class ConstanteAdmin(admin.ModelAdmin):
+    list_display = ('nombre','valor')
+        
+
 admin.site.register(Tarifa,TarifaAdmin)
 admin.site.register(ValorTipo,ValorTipoAdmin)
+admin.site.register(Constante,ConstanteAdmin)

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="/parking/guardar/" method="post">
+	{% csrf_token %}
+First name: <input type="text" name="firstname" value="{{nombre}}"><br>
+Last name: <input type="text" name="lastname">
+<input type="submit" value="guardar" />
+</form>
+{% endblock %}

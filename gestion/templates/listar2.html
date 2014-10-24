@@ -1,0 +1,28 @@
+{#% extends "admin/base_site.html" %#}
+{% extends "base.html" %}
+
+
+
+{% block content %}
+
+Listado de usuarios
+
+<table class="table table-striped">
+ <tr>
+<th>usuario</th><th>nombre</th><th>Opciones</th>
+ </tr>
+
+
+    
+    {% for usuario in list_usuarios %}
+     <tr>
+     	<td>{{ usuario.first_name }}</td>
+     	<td>{{ usuario.email }}</td>
+     	<td><a href="">Editar</a> | <a href="">Borrar</a></td>
+     </tr>
+    {% endfor %}
+    
+
+</table>
+
+{% endblock %}

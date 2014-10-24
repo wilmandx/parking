@@ -1,0 +1,28 @@
+
+
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<h3>Lista de parametros</h3>
+
+<a href="/gestion/loadparametro">Nuevo parametro</a>
+<br />
+<br />
+<table border="1" width="98%">
+	<tr>
+		<th width="40%">Nombre parametro</th>
+		<th width="40%">Valor parametro</th>
+		<th width="20%">Opciones</th>
+	</tr>
+	{% for parametro in list_parametros %}
+	<tr>
+		<td>{{parametro.nombre}}</td>
+		<td>{{parametro.valor}}</td>
+		<td><a href="">Editar</a> | <a href="">Eliminar</a></td>
+	</tr>
+	{% endfor %}
+</table>
+
+{% endblock %}

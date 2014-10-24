@@ -1,0 +1,32 @@
+
+
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<h3>Parametro</h3>
+
+<a href="/gestion/parametros">Listar</a>
+<br />
+<br />
+<form>
+	<div>
+<label>Nombre</label>
+<input type="text" size="50" />
+</div>
+<div>
+<label>Descripcion</label>
+<input type="text" size="50" />
+</div>
+<div>
+<label>Valor</label>
+<input type="text" size="50" />
+</div>
+<div class="center-content">
+<input type="submit" value="Guardar"/> 
+<input type="reset" value="Cancelar"/> 
+</div>
+</form>
+
+{% endblock %}

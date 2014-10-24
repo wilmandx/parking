@@ -32,7 +32,8 @@ p {
 #content {
     float: left;
     background: #FFFFFF;
-    width: 850px;
+    width: 834px;
+    padding: 8px;
 }
 
 #leftcolumn {
@@ -46,5 +47,17 @@ p {
     width: 1000px;
     background: #33FF66;
     clear: both;
+}
+
+form label{
+    display: inline-block;
+    width: 100px;
+    margin-bottom: 8px;
+}
+
+.center-content{
+    margin-top: 5px;
+    padding-top: 5px;
+    text-align: center;
 }
 

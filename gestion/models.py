@@ -29,3 +29,17 @@ class Parqueo(models.Model):
 	valor = models.FloatField(blank=True, null=True)
 	def __str__(self):
 		return self.placa
+
+class Constante(models.Model):
+	nombre=models.CharField(max_length=50)
+	descripcion=models.CharField(max_length=500,blank=True, null=True)
+	valor=models.CharField(max_length=100)
+	def __str__(self):
+		return self.nombre
+
+
+
+
+
+
+

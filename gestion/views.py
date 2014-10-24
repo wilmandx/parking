@@ -8,6 +8,7 @@ from django.forms import ModelForm
 from django.http import HttpResponseRedirect
 import datetime
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 # Create your views here.
 class TarifaForm(ModelForm):
@@ -35,6 +36,14 @@ def listar(request,message=None):
     	message='Operacion realizada correctamente!!'
     context = {'message':message ,'tarifas_list':list_tarifas}
     return render(request, 'listar.html',context)
+
+@login_required
+def listar2(request,message=None):
+    list_usuarios=User.objects.all()
+    #if message:
+    #	message='Operacion realizada correctamente!!'
+    context = {'message':message ,'list_usuarios':list_usuarios}
+    return render(request, 'listar2.html',context)
 
 @login_required
 def edit(request,id=None):

@@ -11,19 +11,15 @@
 <body>
     <div id="wrapper">
         <div id="header">
-            Site
+            Sistema de parqueaderos
         </div>
         <div id="navigation">
-            <p>This is the Menu - {{ user.get_username }}</p>
+            <p>This is the Menu - {{ user.get_username }}<a href="/admin/logout" >Cerrar sesión</a> </p>
+            
         </div>
         <div id="leftcolumn">
             {% block sidebar %}
-                {% if user|in_group:"Administrador" %}
-                    {% include "menuAdmin.html" %}
-                {% endif %}
-                {% if user|in_group:"Operador" %}
-                    {% include "menuOperador.html" %}
-                {% endif %}
+                {% include "menu_ejemplo.html" %}
             {% endblock %}
         </div>
 

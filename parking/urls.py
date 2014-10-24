@@ -9,6 +9,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^gestion/', include('gestion.urls',namespace="gestion")),
     url(r'^parking/$', 'parking.views.index', name='home'),
+    url(r'^parking/registrar/$', 'parking.views.registrar', name='registrar'),
+    url(r'^parking/guardar/$', 'parking.views.guardar', name='guardar'),
     url(r'^parking2/$', 'parking.views.index2', name='home2'),
     url(r'^parking2/forms$', 'parking.views.forms', name='forms'),
 )

@@ -11,6 +11,19 @@ def index(request):
 	return render(request, 'base.html')
 	#return HttpResponse(str(usuario.groups.values_list('name',flat=True))+"Hello,,,, world. You're at the polls index.")
 
+@login_required
+def registrar(request):
+	#usuario=request.user
+	contexto={'nombre':'Juan'}
+	return render(request, 'entrada.html',contexto)
+
+@login_required
+def guardar(request):
+	#usuario=request.user
+	print("Llego una variable")
+	nombre=request.POST['firstname']
+	print(nombre)
+	return render(request, 'entrada.html')
 
 @login_required
 def index2(request):

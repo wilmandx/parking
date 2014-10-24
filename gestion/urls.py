@@ -1,10 +1,11 @@
 from django.conf.urls import patterns, url
 
-from gestion import views
+from gestion import views,views_parametros
 
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     url(r'^listar/$', views.listar, name='listar'),
+    url(r'^listar2/$', views.listar2, name='listar2'),
     url(r'^listar/(?P<message>\w+)/$', views.listar,name='listar1'),
     url(r'^save/$',views.save, name='save'), 
     url(r'^delete/(?P<id>\d+)/$', views.delete, name='delete'),  
@@ -14,4 +15,6 @@ urlpatterns = patterns('',
     url(r'^entradas/save/$', views.save_entrada, name='save_entrada'),
     url(r'^entradas/validar/$', views.validar_entrada, name='validar_entrada'),
     url(r'^reportediario/$', views.reportediario, name='reportediario'),
+    url(r'^parametros/$', views_parametros.listar, name='listarParametros'),
+    url(r'^loadparametro/$', views_parametros.load, name='loadParametros'),
 )
