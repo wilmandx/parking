@@ -22,9 +22,8 @@ class Parqueo(models.Model):
 	horaEntrada = models.DateTimeField(auto_now=True)
 	horaSalida = models.DateTimeField(auto_now=False,blank=True, null=True)
 	tipoVehiculo = models.ForeignKey(ValorTipo,related_name='+')
-	tipoTarifa = models.ForeignKey(ValorTipo,related_name='+')
+	tipoTarifa = models.ForeignKey(Tarifa,related_name='+')
 	nroFactura = models.IntegerField(blank=True, null=True)
-	nroRecibo = models.IntegerField(blank=True, null=True)
 	horas = models.IntegerField(blank=True, null=True)
 	valor = models.FloatField(blank=True, null=True)
 	def __str__(self):

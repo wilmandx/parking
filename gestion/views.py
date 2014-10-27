@@ -78,8 +78,7 @@ def entradas(request):
 
 @login_required
 def validar_entrada(request):
-	ta,vt,parqueo=Tarifa(),ValorTipo(),Parqueo()
-	vt.id,ta.tipoTarifa=1,vt
+	parqueo=Parqueo()
 	entrada=True
 	if request.POST['placa']!='': 
 		placa=request.POST['placa']
@@ -93,26 +92,30 @@ def validar_entrada(request):
 		entrada=False
 	except Parqueo.DoesNotExist:
 		parqueo.placa=placa
+		parqueo.horaEntrada=timezone.now()
 	context = {'opcion':'gestion:save_entrada','parqueo':parqueo,'entrada':entrada}
 	return render(request, 'entradas.html',context)
 
 @login_required
 def save_entrada(request):
-	entrada=True
-	ta,vt,parqueo=Tarifa(),ValorTipo(),Parqueo()
-	vt.id,ta.tipoTarifa=1,vt
+	parqueo=Parqueo()
 	placa=''
 	if request.POST['id']!='':
 		parqueo.id=int(request.POST['id'])
 	if request.POST['placa']!='':
 		placa=request.POST['placa']
+	parqueo.placa=placa
+	parqueo.tipoVehiculo=ValorTipo(id=(int(request.POST['tipoVehiculo']),1)[request.POST['tipoVehiculo']==''])
+	parqueo.tipoTarifa=Tarifa(id=(int(request.POST['tipoTarifa']),1)[request.POST['tipoTarifa']==''])
+	parqueo.save()
 	#Buscar con la placa...si ya hay una entrada
-	form = ParqueoForm(request.POST,instance=parqueo)
-	list_parqueos=Parqueo.objects.all()
-	context = {'list_parqueos':list_parqueos,'entrada':entrada}
-	if form.is_valid():
-		form.save()
-	return render(request, 'entradas.html',context)
+	#form = ParqueoForm(request.POST,instance=parqueo)
+	#list_parqueos=Parqueo.objects.all()
+	#context = {'list_parqueos':list_parqueos,'entrada':entrada}
+	#if form.is_valid():
+	#	form.save()
+	#return render(request, 'entradas.html')
+	return redirect('gestion:entradas')
 
 @login_required
 def reportediario(request):
