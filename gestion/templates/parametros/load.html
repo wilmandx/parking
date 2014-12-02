@@ -10,18 +10,20 @@
 <a href="/gestion/parametros">Listar</a>
 <br />
 <br />
-<form>
+<form action="/gestion/guardaparametro/" method="post">
+	{% csrf_token %}
 	<div>
+	<input name="id" value="{{parametro.id|default_if_none:""}}" type="hidden" />
 <label>Nombre</label>
-<input type="text" size="50" />
+<input name="nombre" type="text" value="{{parametro.nombre}}" size="50" />
 </div>
 <div>
-<label>Descripcion</label>
-<input type="text" size="50" />
+<label>Descripcionss</label>
+<textarea name="descripcion" cols="60" rows="5">{{parametro.descripcion|default_if_none:""}}</textarea>
 </div>
 <div>
 <label>Valor</label>
-<input type="text" size="50" />
+<input name="valor" type="text" value="{{parametro.valor}}" size="50" />
 </div>
 <div class="center-content">
 <input type="submit" value="Guardar"/> 

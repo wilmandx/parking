@@ -5,6 +5,11 @@
 
 {% block content %}
 
+{%  if message_success %}
+<div class="mensajes">
+{{message_success}}
+</div>
+{% endif%}
 <h3>Lista de parametros</h3>
 
 <a href="/gestion/loadparametro">Nuevo parametro</a>
@@ -20,7 +25,7 @@
 	<tr>
 		<td>{{parametro.nombre}}</td>
 		<td>{{parametro.valor}}</td>
-		<td><a href="">Editar</a> | <a href="">Eliminar</a></td>
+		<td><a href="/gestion/loadparametro/{{parametro.id}}/">Editar</a> | <a href="/gestion/eliminarParametro/{{parametro.id}}/">Eliminar</a></td>
 	</tr>
 	{% endfor %}
 </table>
